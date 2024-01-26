@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#B1B0B0"
+    android:layout_marginVertical="@dimen/_8sdp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:id="@+id/lnTray"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:weightSum="5">
+        <ImageView
+            android:id="@+id/iv_sticker_tray"
+            android:layout_width="@dimen/_70sdp"
+            android:layout_height="@dimen/_70sdp"
+            android:layout_marginVertical="@dimen/_6sdp"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:scaleType="fitCenter"
+            android:layout_weight="1"
+            android:src="@drawable/sticker_1"
+            tools:ignore="MissingConstraints" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_weight="4">
+
+        <TextView
+            android:id="@+id/tvTitleSticker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Chicken"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_16sdp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvTitleDetailSticker"
+            android:layout_width="match_parent"
+            android:text="Chicken option"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="@dimen/_20sdp"
+                android:src="@drawable/ic_download"
+                android:padding="@dimen/_4sdp"
+                android:layout_gravity="center"
+                app:tint="#FA0000"
+                android:layout_height="@dimen/_20sdp"/>
+
+            <TextView
+                android:id="@+id/tvNumberDownload"
+                android:layout_width="match_parent"
+                android:text="50180"
+                android:textColor="#F40000"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/lnListImageSticker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lnTray"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:id="@+id/sticker_one"
+            android:layout_width="@dimen/_44sdp"
+            android:layout_height="@dimen/_44sdp"
+            android:layout_marginVertical="@dimen/_6sdp"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/sticker_1" />
+
+        <ImageView
+            android:id="@+id/sticker_two"
+            android:layout_width="@dimen/_44sdp"
+            android:layout_height="@dimen/_44sdp"
+            android:layout_marginVertical="@dimen/_6sdp"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/sticker_1" />
+
+        <ImageView
+            android:id="@+id/sticker_three"
+            android:layout_width="@dimen/_44sdp"
+            android:layout_height="@dimen/_44sdp"
+            android:layout_margin="@dimen/_6sdp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/sticker_1" />
+
+        <ImageView
+            android:id="@+id/sticker_four"
+            android:layout_width="@dimen/_44sdp"
+            android:layout_height="@dimen/_44sdp"
+            android:layout_marginVertical="@dimen/_6sdp"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:src="@drawable/sticker_1" />
+
+        <ImageView
+            android:id="@+id/sticker_five"
+            android:layout_width="@dimen/_44sdp"
+            android:layout_height="@dimen/_44sdp"
+            android:layout_marginVertical="@dimen/_6sdp"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:src="@drawable/sticker_1" />
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
