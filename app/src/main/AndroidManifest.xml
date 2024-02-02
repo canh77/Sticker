@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
 
     <application
         android:allowBackup="true"
@@ -16,14 +18,7 @@
         android:theme="@style/Theme.StickerWhatsapp"
         tools:targetApi="31">
         <activity
-            android:name=".LoadDataActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".fragment.TestActivity"
+            android:name=".activity.ShowDataActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -42,6 +37,15 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
+        <provider
+            android:name=".contentprovider.StickerContentProvider"
+            android:authorities="${contentProviderAuthority}"
+            android:enabled="true"
+            android:exported="true"
+            android:readPermission="com.whatsapp.sticker.READ" />
+
+
     </application>
 
 </manifest>

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.ShowDataActivity">
+
+    <include
+        android:id="@+id/toolbarTitle"
+        layout="@layout/toolbar_details_sticker"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/lnTrayIcon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:orientation="horizontal"
+        android:weightSum="5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/frRvSticker"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarTitle">
+
+        <ImageView
+            android:id="@+id/iv_sticker_tray_details"
+            android:layout_width="@dimen/_70sdp"
+            android:layout_height="@dimen/_70sdp"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginVertical="@dimen/_6sdp"
+            android:layout_weight="1"
+            android:scaleType="fitCenter"
+            android:src="@drawable/sticker_1"
+            tools:ignore="MissingConstraints" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="4"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvTitleStickerDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Chicken"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sdp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvStickerDescriptionDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Chicken option" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_gravity="center"
+                    android:padding="@dimen/_4sdp"
+                    android:src="@drawable/ic_download"
+                    app:tint="#FA0000" />
+
+                <TextView
+                    android:id="@+id/tvNumberDownloadDetails"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="50180"
+                    android:textColor="#F40000" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/frRvSticker"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lnTrayIcon"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:background="#F4EEEE"
+        android:layout_height="0dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvShowDataSticker"
+            android:layout_width="match_parent"
+            android:paddingHorizontal="@dimen/_6sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_height="match_parent"/>
+
+       <LinearLayout
+           android:id="@+id/lnShareSticker"
+           android:layout_width="wrap_content"
+           android:orientation="horizontal"
+           android:background="@drawable/bg_item_sticker"
+           android:paddingHorizontal="@dimen/_6sdp"
+           android:paddingVertical="@dimen/_4sdp"
+           android:layout_marginEnd="@dimen/_16sdp"
+           android:layout_gravity="bottom|end"
+           android:layout_marginBottom="@dimen/_80sdp"
+           android:layout_height="wrap_content">
+
+           <ImageView
+               android:layout_width="@dimen/_20sdp"
+               android:src="@drawable/ic_share"
+               android:padding="@dimen/_4sdp"
+               android:layout_height="@dimen/_20sdp"/>
+
+           <TextView
+               android:layout_width="match_parent"
+               android:text="Share"
+               android:textAllCaps="true"
+               android:textStyle="bold"
+               android:textColor="@color/black"
+               android:layout_gravity="center"
+               android:layout_height="wrap_content"/>
+       </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/addToWhatsapp"
+            android:layout_width="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/bg_add_to_whatsapp"
+            android:paddingVertical="@dimen/_4sdp"
+            android:paddingHorizontal="@dimen/_6sdp"
+            android:layout_marginEnd="@dimen/_16sdp"
+            android:layout_gravity="bottom|end"
+            android:layout_marginBottom="@dimen/_40sdp"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="@dimen/_20sdp"
+                android:src="@drawable/ic_whatsapp"
+                android:padding="@dimen/_4sdp"
+                app:tint="#FFFFFF"
+                android:layout_height="@dimen/_20sdp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:text="Add to whatsapp"
+                android:textStyle="bold"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+    </FrameLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
