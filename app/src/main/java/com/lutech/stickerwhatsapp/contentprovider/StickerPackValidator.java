@@ -9,16 +9,14 @@
 package com.lutech.stickerwhatsapp.contentprovider;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.text.TextUtils;
 import android.util.Log;
-import android.util.Patterns;
 import android.webkit.URLUtil;
 
 import androidx.annotation.NonNull;
 
-import com.lutech.stickerwhatsapp.model.Sticker;
+
+import com.lutech.stickerwhatsapp.model.Sticker1;
 import com.lutech.stickerwhatsapp.model.StickerImage;
 
 import java.io.IOException;
@@ -49,27 +47,27 @@ class StickerPackValidator {
     /**
      * Checks whether a sticker pack contains valid data
      */
-    static void verifyStickerPackValidity(@NonNull Context context, @NonNull Sticker stickerPack) throws IllegalStateException {
-        if (TextUtils.isEmpty(stickerPack.getTitle())) {
+    static void verifyStickerPackValidity(@NonNull Context context, @NonNull Sticker1 stickerPack) throws IllegalStateException {
+        if (TextUtils.isEmpty(stickerPack.title)) {
             throw new IllegalStateException("sticker pack title is empty");
         }
         if (stickerPack.getTitle().length() > CHAR_COUNT_MAX) {
             throw new IllegalStateException("sticker pack identifier cannot exceed " + CHAR_COUNT_MAX + " characters");
         }
 
-        if (TextUtils.isEmpty(stickerPack.getDescription())) {
+        if (TextUtils.isEmpty(stickerPack.description)) {
             throw new IllegalStateException("sticker pack descriptions is empty, sticker pack descriptions: " + stickerPack.getSticker());
         }
-        if (stickerPack.getTray_icon().length() > CHAR_COUNT_MAX) {
+        if (stickerPack.tray_icon.length() > CHAR_COUNT_MAX) {
             throw new IllegalStateException("sticker pack publisher cannot exceed " + CHAR_COUNT_MAX + " characters, sticker pack identifier: " + stickerPack.getTitle());
         }
-        if (TextUtils.isEmpty(stickerPack.getFacebook_url())) {
+        if (TextUtils.isEmpty(stickerPack.facebook_url)) {
             throw new IllegalStateException("sticker pack name is empty, sticker pack identifier: " + stickerPack.getTitle());
         }
-        if (stickerPack.getInstagram_url().length() > CHAR_COUNT_MAX) {
+        if (stickerPack.instagram_url.length() > CHAR_COUNT_MAX) {
             throw new IllegalStateException("sticker pack name cannot exceed " + CHAR_COUNT_MAX + " characters, sticker pack identifier: " + stickerPack.getTitle());
         }
-        if (TextUtils.isEmpty(stickerPack.getTiktok_url())) {
+        if (TextUtils.isEmpty(stickerPack.tiktok_url)) {
             throw new IllegalStateException("sticker pack tray id is empty, sticker pack identifier:" + stickerPack.getTitle());
 
 //            try {
@@ -86,21 +84,21 @@ class StickerPackValidator {
 //                }
 //            } catch (IOException e) {
 //                throw new IllegalStateException("Cannot open tray image, " + stickerPack.getTray_icon(), e);
-//            }
+            }
 
-//            final List<StickerImage> stickers = stickerPack.getSticker();
-//            if (stickers.size() < STICKER_SIZE_MIN || stickers.size() > STICKER_SIZE_MAX) {
-//                throw new IllegalStateException("sticker pack sticker count should be between 3 to 30 inclusive, it currently has " + stickers.size() +
-//                        ", sticker pack identifier: " + stickerPack.getTitle());
-//            }
-//            for (final StickerImage sticker : stickers) {
+            final List<StickerImage> stickers = stickerPack.getSticker();
+            if (stickers.size() < STICKER_SIZE_MIN || stickers.size() > STICKER_SIZE_MAX) {
+                throw new IllegalStateException("sticker pack sticker count should be between 3 to 30 inclusive, it currently has " + stickers.size() +
+                        ", sticker pack identifier: " + stickerPack.getTitle());
+            }
+            for (final StickerImage sticker : stickers) {
 //                validateSticker(context, stickerPack.getTitle(), stickerPack, sticker.getIs_animated());
-//            }
-        }
+            }
+//        }
     }
 
-//    private static void validateSticker(@NonNull Context context, @NonNull final String identifier, @NonNull final Sticker sticker, final boolean animatedStickerPack)
-//        throws IllegalStateException {
+    private static void validateSticker(@NonNull Context context, @NonNull final String identifier, @NonNull final Sticker1 sticker, final boolean animatedStickerPack)
+        throws IllegalStateException {
 //        if (sticker.emojis.size() > EMOJI_MAX_LIMIT) {
 //            throw new IllegalStateException("emoji count exceed limit, sticker pack identifier: " + identifier + ", filename: " + sticker.imageFileName);
 //        }
@@ -111,17 +109,17 @@ class StickerPackValidator {
 //            throw new IllegalStateException("no file path for sticker, sticker pack identifier:" + identifier);
 //        }
 //        validateStickerFile(context, identifier, sticker.imageFileName, animatedStickerPack);
-//    }
+    }
 
-//    private static void validateStickerFile(@NonNull Context context, @NonNull String identifier, @NonNull final String fileName, final boolean animatedStickerPack) throws IllegalStateException {
-//        try {
-//            final byte[] stickerInBytes = StickerPackLoader.fetchStickerAsset(identifier, fileName, context.getContentResolver());
-//            if (!animatedStickerPack && stickerInBytes.length > STATIC_STICKER_FILE_LIMIT_KB * KB_IN_BYTES) {
-//                throw new IllegalStateException("static sticker should be less than " + STATIC_STICKER_FILE_LIMIT_KB + "KB, current file is " + stickerInBytes.length / KB_IN_BYTES + " KB, sticker pack identifier: " + identifier + ", filename: " + fileName);
-//            }
-//            if (animatedStickerPack && stickerInBytes.length > ANIMATED_STICKER_FILE_LIMIT_KB * KB_IN_BYTES) {
-//                throw new IllegalStateException("animated sticker should be less than " + ANIMATED_STICKER_FILE_LIMIT_KB + "KB, current file is " + stickerInBytes.length / KB_IN_BYTES + " KB, sticker pack identifier: " + identifier + ", filename: " + fileName);
-//            }
+    private static void validateStickerFile(@NonNull Context context, @NonNull String identifier, @NonNull final String fileName, final boolean animatedStickerPack) throws IllegalStateException {
+        try {
+            final byte[] stickerInBytes = StickerPackLoader.fetchStickerAsset(identifier, fileName, context.getContentResolver());
+            if (!animatedStickerPack && stickerInBytes.length > STATIC_STICKER_FILE_LIMIT_KB * KB_IN_BYTES) {
+                throw new IllegalStateException("static sticker should be less than " + STATIC_STICKER_FILE_LIMIT_KB + "KB, current file is " + stickerInBytes.length / KB_IN_BYTES + " KB, sticker pack identifier: " + identifier + ", filename: " + fileName);
+            }
+            if (animatedStickerPack && stickerInBytes.length > ANIMATED_STICKER_FILE_LIMIT_KB * KB_IN_BYTES) {
+                throw new IllegalStateException("animated sticker should be less than " + ANIMATED_STICKER_FILE_LIMIT_KB + "KB, current file is " + stickerInBytes.length / KB_IN_BYTES + " KB, sticker pack identifier: " + identifier + ", filename: " + fileName);
+            }
 //            try {
 //                final WebPImage webPImage = WebPImage.createFromByteArray(stickerInBytes, ImageDecodeOptions.defaults());
 //                if (webPImage.getHeight() != IMAGE_HEIGHT) {
@@ -144,10 +142,10 @@ class StickerPackValidator {
 //            } catch (IllegalArgumentException e) {
 //                throw new IllegalStateException("Error parsing webp image, sticker pack identifier: " + identifier + ", filename: " + fileName, e);
 //            }
-//        } catch (IOException e) {
-//            throw new IllegalStateException("cannot open sticker file: sticker pack identifier: " + identifier + ", filename: " + fileName, e);
-//        }
-//    }
+        } catch (IOException e) {
+            throw new IllegalStateException("cannot open sticker file: sticker pack identifier: " + identifier + ", filename: " + fileName, e);
+        }
+    }
 
     private static void checkFrameDurationsForAnimatedSticker(@NonNull final int[] frameDurations, @NonNull final String identifier, @NonNull final String fileName) {
         for (int frameDuration : frameDurations) {

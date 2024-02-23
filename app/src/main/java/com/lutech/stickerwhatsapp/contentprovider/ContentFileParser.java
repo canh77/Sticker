@@ -10,10 +10,12 @@ package com.lutech.stickerwhatsapp.contentprovider;
 
 import android.text.TextUtils;
 import android.util.JsonReader;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import com.lutech.stickerwhatsapp.model.Sticker;
+
+import com.lutech.stickerwhatsapp.model.Sticker1;
 import com.lutech.stickerwhatsapp.model.StickerImage;
 
 import java.io.IOException;
@@ -25,15 +27,15 @@ import java.util.List;
 class ContentFileParser {
 
     @NonNull
-    static List<Sticker> parseStickerPacks(@NonNull InputStream contentsInputStream) throws IOException, IllegalStateException {
+    static List<Sticker1> parseStickerPacks(@NonNull InputStream contentsInputStream) throws IOException, IllegalStateException {
         try (JsonReader reader = new JsonReader(new InputStreamReader(contentsInputStream))) {
             return readStickerPacks(reader);
         }
     }
 
     @NonNull
-    private static List<Sticker> readStickerPacks(@NonNull JsonReader reader) throws IOException, IllegalStateException {
-        List<Sticker> stickerPackList = new ArrayList<>();
+    private static List<Sticker1> readStickerPacks(@NonNull JsonReader reader) throws IOException, IllegalStateException {
+        List<Sticker1> stickerPackList = new ArrayList<>();
         reader.beginObject();
         while (reader.hasNext()) {
             String key = reader.nextName();
@@ -44,7 +46,7 @@ class ContentFileParser {
             } else if ("sticker_packs".equals(key)) {
                 reader.beginArray();
                 while (reader.hasNext()) {
-                    Sticker stickerPack = readStickerPack(reader);
+                    Sticker1 stickerPack = readStickerPack(reader);
                     stickerPackList.add(stickerPack);
                 }
                 reader.endArray();
@@ -60,7 +62,7 @@ class ContentFileParser {
     }
 
     @NonNull
-    private static Sticker readStickerPack(@NonNull JsonReader reader) throws IOException, IllegalStateException {
+    private static Sticker1 readStickerPack(@NonNull JsonReader reader) throws IOException, IllegalStateException {
         reader.beginObject();
         String title = null;
         String description = null;
@@ -111,6 +113,7 @@ class ContentFileParser {
             }
         }
         if (TextUtils.isEmpty(title)) {
+            Log.d("0001101100", "TextUtils.isEmpty(title): ");
             throw new IllegalStateException("title cannot be empty");
         }
         if (TextUtils.isEmpty(description)) {
@@ -122,6 +125,18 @@ class ContentFileParser {
         if (TextUtils.isEmpty(facebook_url)) {
             throw new IllegalStateException("facebook_url cannot be empty");
         }
+
+        if (TextUtils.isEmpty(instagram_url)){
+            throw  new IllegalStateException("instagram_url cannot be empty");
+        }
+
+        if (TextUtils.isEmpty(twitter_url)){
+            throw  new IllegalStateException("twitter_url cannot be empty");
+        }
+
+        if (TextUtils.isEmpty(tiktok_url)){
+            throw  new IllegalStateException("tiktok_url cannot be empty");
+        }
         if (stickerList == null || stickerList.size() == 0) {
             throw new IllegalStateException("sticker list is empty");
         }
@@ -130,7 +145,9 @@ class ContentFileParser {
         }
 
         reader.endObject();
-        final Sticker stickerPack = new Sticker(title,description,tray_icon,1,1,"","","","","",stickerList);
+        final Sticker1 stickerPack = new Sticker1(title,description,tray_icon,
+                1,1,"","",
+                "","","",stickerList);
         stickerPack.setSticker(stickerList);
         return stickerPack;
     }
@@ -143,7 +160,7 @@ class ContentFileParser {
         while (reader.hasNext()) {
             reader.beginObject();
             String imageFile = null;
-//            List<String> emojis = new ArrayList<>(StickerPackValidator.EMOJI_MAX_LIMIT);
+            List<String> emojis = new ArrayList<>(StickerPackValidator.EMOJI_MAX_LIMIT);
             while (reader.hasNext()) {
                 final String key = reader.nextName();
                 if ("image_file".equals(key)) {
@@ -153,7 +170,7 @@ class ContentFileParser {
                     while (reader.hasNext()) {
                         String emoji = reader.nextString();
                         if (!TextUtils.isEmpty(emoji)) {
-//                            emojis.add(emoji);
+                            emojis.add(emoji);
                         }
                     }
                     reader.endArray();
@@ -166,13 +183,14 @@ class ContentFileParser {
             if (TextUtils.isEmpty(imageFile)) {
                 throw new IllegalStateException("sticker image_file cannot be empty");
             }
+            //có ảnh webp
             if (!imageFile.endsWith(".webp")) {
                 throw new IllegalStateException("image file for stickers should be webp files, image file is: " + imageFile);
             }
             if (imageFile.contains("..") || imageFile.contains("/")) {
                 throw new IllegalStateException("the file name should not contain .. or / to prevent directory traversal, image file is:" + imageFile);
             }
-            stickerList.add(new StickerImage("","",0));
+            stickerList.add(new StickerImage(1,"",0));
         }
         reader.endArray();
         return stickerList;

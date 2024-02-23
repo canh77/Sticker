@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/_10sdp"
+    android:id="@+id/lnMain"
+    android:minWidth="@dimen/_300sdp"
+    android:layout_marginStart="@dimen/_20sdp"
+    android:layout_marginEnd="@dimen/_20sdp"
+    >
+
+    <TextView
+        android:id="@+id/dialog_sticker_child_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ciriminalracoon"
+        android:textSize="@dimen/_20ssp" />
+
+    <ImageView
+        android:id="@+id/dialog_sticker_child_image"
+        android:layout_width="@dimen/_180sdp"
+        android:layout_height="@dimen/_180sdp"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:src="@drawable/sticker_19" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        >
+
+        <TextView
+            android:id="@+id/dialog_sticker_child_share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:text="Share"
+            android:foreground="?attr/selectableItemBackground"
+            android:textSize="@dimen/_16ssp" />
+
+        <TextView
+            android:id="@+id/dialog_sticker_child_download"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:text="Download"
+            android:foreground="?attr/selectableItemBackground"
+            android:textSize="@dimen/_16ssp"
+
+            />
+    </RelativeLayout>
+</LinearLayout>

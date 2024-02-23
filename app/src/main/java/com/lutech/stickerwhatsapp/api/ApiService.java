@@ -3,7 +3,7 @@ package com.lutech.stickerwhatsapp.api;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.lutech.stickerwhatsapp.Utils.Constant;
-import com.lutech.stickerwhatsapp.model.Sticker;
+import com.lutech.stickerwhatsapp.model.Sticker1;
 
 import java.util.List;
 
@@ -21,7 +21,7 @@ public interface ApiService {
             .build()
             .create(ApiService.class);
 
-    @GET("data_sticker_3.json")
-    Call<List<Sticker>> getListSticker(@Query("title") String title);
+    @GET("data_sticker_2.json")
+    Call<List<Sticker1>> getListSticker(@Query("title") String title);
 
 }

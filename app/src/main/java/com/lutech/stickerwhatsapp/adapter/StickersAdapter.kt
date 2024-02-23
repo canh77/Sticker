@@ -1,27 +1,24 @@
 package com.lutech.stickerwhatsapp.adapter
 
 import android.content.Context
-import androidx.recyclerview.widget.RecyclerView
-import com.lutech.stickerwhatsapp.adapter.StickersAdapter.StickerViewHolder
-import android.view.ViewGroup
-import android.view.LayoutInflater
-import com.lutech.stickerwhatsapp.R
-import com.bumptech.glide.Glide
-import android.widget.Toast
 import android.content.Intent
-import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageView
-import com.lutech.stickerwhatsapp.activity.ShowDataActivity
 import android.widget.TextView
-import com.lutech.stickerwhatsapp.model.Sticker
+import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.lutech.stickerwhatsapp.R
+import com.lutech.stickerwhatsapp.activity.ShowDataActivity
+import com.lutech.stickerwhatsapp.adapter.StickersAdapter.StickerViewHolder
+import com.lutech.stickerwhatsapp.model.Sticker1
 
-class StickersAdapter(private val mListStickers: List<Sticker>?) :
+class StickersAdapter(private val mListStickers: List<Sticker1>?) :
     RecyclerView.Adapter<StickerViewHolder>() {
     private val mContext: Context? = null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StickerViewHolder {
-        val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.list_item_sticker, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.list_item_sticker, parent, false)
         return StickerViewHolder(view)
     }
 
@@ -41,6 +38,7 @@ class StickersAdapter(private val mListStickers: List<Sticker>?) :
         while (i < stickerImagesList.size && i < 10) {
             val stickerImage = stickerImagesList[i]
             val imageUrl = stickerImage.url
+//            Log.d("01234567899874", "imageUrl: " +imageUrl)
             var imageViewId: Int = when (i) {
                 0 -> holder.sticker_one.id
                 1 -> holder.sticker_two.id
@@ -64,8 +62,10 @@ class StickersAdapter(private val mListStickers: List<Sticker>?) :
             i++
         }
         holder.itemView.setOnClickListener { view ->
+            val stickerPackList: MutableList<Sticker1> = mutableListOf()
             val selectedSticker = mListStickers!![position]
             val intent = Intent(view.context, ShowDataActivity::class.java)
+//            intent.putParcelableArrayListExtra(EXTRA_STICKER_PACK_LIST_DATA,stickerPackList)
             intent.putExtra("sticker_title", selectedSticker.title)
             intent.putExtra("sticker_description", selectedSticker.description)
             intent.putExtra("sticker_tray_icon", selectedSticker.tray_icon)

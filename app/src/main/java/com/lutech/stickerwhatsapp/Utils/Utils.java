@@ -1,13 +1,11 @@
 package com.lutech.stickerwhatsapp.Utils;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Environment;
-import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
@@ -18,7 +16,7 @@ import com.lutech.stickerwhatsapp.R;
 
 import java.io.File;
 
-public class Utilss {
+public class Utils {
     private static Dialog dialog;
 
     public static Dialog onCreateDialog(Context context, int id, boolean isCancelOnTouchOutside) {
@@ -71,6 +69,8 @@ public class Utilss {
         SharedPreferences prfs = context.getSharedPreferences("AUTHENTICATION_FILE_NAME", Context.MODE_PRIVATE);
         return prfs.getString(KEY, "0");
     }
+
+
 
 
 }

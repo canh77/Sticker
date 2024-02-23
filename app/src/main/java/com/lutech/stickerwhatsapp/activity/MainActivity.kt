@@ -2,7 +2,6 @@ package com.lutech.stickerwhatsapp.activity
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isVisible
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.lutech.stickerwhatsapp.R
 import com.lutech.stickerwhatsapp.adapter.MainViewPageAdapter
@@ -35,10 +34,15 @@ class MainActivity : AppCompatActivity() {
                 bottomNavigation!!.menu.findItem(R.id.bottCommunitys).isChecked = true
                 fragmentContainer!!.setCurrentItem(1, false)
                 ivSearch.visibility = View.VISIBLE
-
             }
             false
         })
+
+//        toolbar_title.setOnClickListener {
+//            Toast.makeText(this, "đã click", Toast.LENGTH_SHORT).show()
+//            val intent = Intent(this,StickerPackListActivity::class.java)
+//            startActivity(intent)
+//        }
 
     }
 }

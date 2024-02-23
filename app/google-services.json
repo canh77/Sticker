@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1087006165909",
+    "project_id": "sticker-whatsapp-7d28b",
+    "storage_bucket": "sticker-whatsapp-7d28b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1087006165909:android:08132acf8560b66022049c",
+        "android_client_info": {
+          "package_name": "com.lutech.stickerwhatsapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBahfU9XcId-NKaX4dOMyvXL8x4fSpgHlY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
