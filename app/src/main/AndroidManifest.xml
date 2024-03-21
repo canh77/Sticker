@@ -4,12 +4,11 @@
     package="com.lutech.stickerwhatsapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
-        android:name=".activity.StickerApplication"
+        android:name=".app.Application"
         android:allowBackup="false"
         android:fullBackupContent="false"
         android:icon="@mipmap/ic_launcher"
@@ -19,25 +18,15 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name=".activity.ShowDataActivity"
+            android:name=".activity.SettingActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
-                <activity
-                    android:name=".activity.AddStickerPackActivity"
-                    android:exported="false">
-                    <meta-data
-                        android:name="android.app.lib_name"
-                        android:value="" />
-                </activity>
-
         <activity
             android:name=".activity.MainActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -49,19 +38,18 @@
                 android:value="" />
         </activity>
 
-
         <provider
-            android:name=".contentprovider.StickerContentProvider2"
-            android:authorities="com.lutech.stickerwhatsapp.contentprovider.StickerContentProvider2"
+            android:name=".provider.StickerContentProvider"
+            android:authorities="${contentProviderAuthority}"
             android:enabled="true"
             android:exported="true"
-            android:readPermission="com.whatsapp.sticker.READ"
-            tools:replace="android:authorities">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths" />
-        </provider>
+            android:readPermission="com.whatsapp.sticker.READ" />
 
+        <activity android:name=".activity.StickerDetailsActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.StickerDetailsActivity" />
+        </activity>
     </application>
 
 </manifest>

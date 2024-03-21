@@ -15,11 +15,17 @@
 
     //
     <color name="colorPrimary">@android:color/transparent</color>
-    <color name="colorPrimaryDark">#BABABA</color>
-    <color name="colorAccent">#128C7E</color>
+    <color name="colorPrimaryDark">#045E55</color>
+    <color name="colorAccent">#138B7F</color>
     <color name="inactiveAddButtonColor">#B3B3B3</color>
     <color name="infoPageBackgroundColor">#EBEBEB</color>
     <color name="actionBarArrowColor">@color/colorAccent</color>
     <color name="animatedStickerIndicator">#66000000</color>
 
+
+    <color name="color_text">#2C8373</color>
+    <color name="color_text_service">#616161</color>
+    <color name="transparent">#00000000</color>
+
+    <color name="color_blue">#25D25F</color>
 </resources>
