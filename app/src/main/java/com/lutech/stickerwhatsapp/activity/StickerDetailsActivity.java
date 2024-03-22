@@ -15,6 +15,8 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.lutech.stickerwhatsapp.BuildConfig;
 import com.lutech.stickerwhatsapp.R;
 import com.lutech.stickerwhatsapp.fragment.CommunityFragment;
@@ -46,6 +48,7 @@ public class StickerDetailsActivity extends AppCompatActivity {
         initView();
         initData();
         handlerEvents();
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
     }
 
     private void initView() {

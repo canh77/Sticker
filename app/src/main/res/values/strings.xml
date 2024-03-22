@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">Sticker Whatsapp</string>
-    
+    <string name="facebook_app_id" translatable="false">806311024301974</string>
+    AIzaSyBahfU9XcId-NKaX4dOMyvXL8x4fSpgHlY
+
+    <string name="default_web_client_id">1087006165909-cg3q6s46p50s1a19dcv35n5d1qk671va.apps.googleusercontent.com</string>
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="txt_error_add_sticker">Error add sticker to whatsapp</string>
     <string name="txt_loading">Loading</string>
@@ -16,7 +20,14 @@
     <string name="txt_sticker_make_premium">Sticker Make Premium</string>
     <string name="txt_settings">Settings</string>
     <string name="txt_buy_continue_you_agree"> <a href="http://www.google.com"><b>Terms of service</b></a> and <a href="http://www.google.com"> <b>Privacy policy</b></a> </string>
-
+    <string name="txt_log_out">Log out?</string>
+    <string name="txt_are_you_sure_you_want_to_log_out">Are you sure you want to log out?</string>
+    <string name="txt_no">No</string>
+    <string name="txt_yes">Yes</string>
+    <string name="txt_login_amp_registration"><![CDATA[Login & Registration]]></string>
+    <string name="txt_login_or_register_a_new_account_to">Login or register a new account to</string>
+    <string name="txt_keep_your_sticker_packs_safe_and_access_more_features">keep your sticker packs safe and access more features</string>
+    <string name="txt_login_as">Log in as</string>
 
 
 </resources>

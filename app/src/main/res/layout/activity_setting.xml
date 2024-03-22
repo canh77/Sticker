@@ -278,14 +278,16 @@
             android:layout_marginVertical="@dimen/_10sdp"
             android:weightSum="4">
 
-            <ImageView
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/ivAvatar"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_44sdp"
-                android:layout_gravity="center"
                 android:layout_marginHorizontal="@dimen/_10sdp"
                 android:layout_weight="3.2"
-                android:background="@drawable/ic_launcher_background"
-                android:src="@drawable/ic_setting_home" />
+                android:src="@drawable/ic_avatar"
+                app:civ_border_width="2dp"
+                app:civ_border_color="#FFFFFF"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -293,22 +295,50 @@
                 android:layout_weight="0.8"
                 android:layout_height="wrap_content">
                 <TextView
+                    android:id="@+id/tvLoginRegister"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="top"
+                    android:textStyle="bold"
                     android:fontFamily="@font/roboto_medium_numbers"
-                    android:text="Login &amp; Registration"
+                    android:text="@string/txt_login_amp_registration"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_12ssp" />
                 <TextView
+                    android:id="@+id/tvNameEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="top"
-                    android:layout_marginVertical="@dimen/_3sdp"
-                    android:text="Login or register a new account to keep your sticker packs safe and access more features"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:text="@string/txt_login_or_register_a_new_account_to"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_10ssp" />
 
+                <TextView
+                    android:id="@+id/tvIdEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:paddingEnd="@dimen/_42ssp"
+                    android:text="@string/txt_keep_your_sticker_packs_safe_and_access_more_features"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp" />
+
+                <TextView
+                    android:id="@+id/btnLogOut"
+                    android:layout_width="wrap_content"
+                    android:text="Log out"
+                    android:paddingVertical="@dimen/_6sdp"
+                    android:paddingHorizontal="@dimen/_6sdp"
+                    android:background="@drawable/bg_sign_gg"
+                    android:layout_marginEnd="@dimen/_16sdp"
+                    android:textColor="@color/color_text"
+                    android:fontFamily="@font/roboto_medium_numbers"
+                    android:textStyle="bold"
+                    android:visibility="gone"
+                    android:layout_gravity="end"
+                    android:gravity="end"
+                    android:layout_height="wrap_content"/>
             </LinearLayout>
 
 

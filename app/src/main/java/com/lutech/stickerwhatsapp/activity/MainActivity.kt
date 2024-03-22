@@ -5,7 +5,10 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.text.Html
+import android.text.method.LinkMovementMethod
 import android.view.View
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ShareCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -15,11 +18,13 @@ import com.lutech.stickerwhatsapp.utils.Constants
 import com.lutech.stickerwhatsapp.utils.Utils
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.dialog_info_sticker.*
+import kotlinx.android.synthetic.main.dialog_login_facebook_gg.*
 import kotlinx.android.synthetic.main.toolbar_main.*
 import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
     private var mDialogInfSticker: Dialog? = null
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -34,6 +39,7 @@ class MainActivity : AppCompatActivity() {
         fragmentContainer!!.isUserInputEnabled = false
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     private fun handlerEvents() {
         bottomNavigation!!.setOnItemSelectedListener(BottomNavigationView.OnNavigationItemSelectedListener { item ->
             if (item.itemId == R.id.btnMySticker) {
@@ -59,14 +65,25 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     private fun dialogInfSticker() {
         mDialogInfSticker = Utils.onCreateDialog(this, R.layout.dialog_info_sticker, true)
-        mDialogInfSticker?.btnPrivacy?.setOnClickListener {
-            Utils.policy(this)
-        }
-        mDialogInfSticker?.btnService?.setOnClickListener {
-            Utils.shareApp(this)
-        }
+
+        //Privacy policy
+        val html = "<a href='https://storage.lutech.vn/app/sticker/meme_pack1/sticker_11.png'>Privacy policy</a> "
+        val styledText = Html.fromHtml(html, Html.FROM_HTML_MODE_COMPACT)
+        mDialogInfSticker?.btnPrivacy?.text = styledText
+        mDialogInfSticker?.btnPrivacy?.movementMethod =
+            LinkMovementMethod.getInstance()
+
+        //Terms of service
+        val htmlPolicy = "<a href='https://storage.lutech.vn/app/sticker/meme_pack1/sticker_11.png'>Terms of service</a> "
+        val styledTexts = Html.fromHtml(htmlPolicy, Html.FROM_HTML_MODE_COMPACT)
+        mDialogInfSticker?.btnService?.text = styledTexts
+        mDialogInfSticker?.btnService?.movementMethod =
+            LinkMovementMethod.getInstance()
+
+
         mDialogInfSticker?.show()
     }
 
